@@ -3,7 +3,11 @@ import React from 'react';
 function Square({ value }) {
   console.log(value);
 
-  return <button type="button">{value}</button>;
+  return (
+    <button type="button" className="square">
+      {value}
+    </button>
+  );
 }
 
 export default Square;
