@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import Board from './Components/Board';
+import History from './Components/History';
 import { calculateWinner } from './helpers';
 
 import './style/root.scss';
 
+// eslint-disable-next-line react/function-component-definition
 const App = () => {
   const [history, setHistory] = useState([
     { board: Array(9).fill(null), isXNext: true },
@@ -38,11 +40,16 @@ const App = () => {
     setCurrentMove(prev => prev + 1);
   };
 
+  const moveTo = move => {
+    setCurrentMove(move);
+  };
+
   return (
     <div className="app">
       <h1>Tic Tac Toe</h1>
       <h2> {message}</h2>
       <Board board={current.board} handlerSquareClick={handlerSquareClick} />
+      <History history={history} moveTo={moveTo} currentMove={currentMove} />
     </div>
   );
 };
