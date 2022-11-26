@@ -1,12 +1,17 @@
+/* eslint-disable react/function-component-definition */
+/* eslint-disable no-console */
 import React from 'react';
 import Square from './Square';
 
-const Board = ({ board, handlerSquareClick }) => {
+const Board = ({ board, handlerSquareClick, winningSquare }) => {
   const renderSquare = position => {
+    const isWinningSquare = winningSquare.includes(position);
+
     return (
       <Square
         value={board[position]}
         onClick={() => handlerSquareClick(position)}
+        isWinningSquare={isWinningSquare}
       />
     );
   };
